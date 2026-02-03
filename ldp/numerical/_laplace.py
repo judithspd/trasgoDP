@@ -18,8 +18,6 @@
 
 import numpy as np
 import pandas as pd
-import typing
-
 
 def dp_clip_laplace(
     df: pd.DataFrame,
@@ -41,6 +39,8 @@ def dp_clip_laplace(
         data = df[column].astype(int)
     elif np.issubdtype(df[column].dtype, np.floating):
         data = df[column].astype(float)
+    else: 
+        raise ValueError("Type of the column not allowed for the Laplace mechanism.")
 
     if lower_bound is None:
         lower_bound = min(data.values)

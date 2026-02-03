@@ -18,8 +18,6 @@
 
 import numpy as np
 import pandas as pd
-import typing
-
 
 def dp_exponential(
     df: pd.DataFrame,
@@ -31,6 +29,9 @@ def dp_exponential(
 
     if column not in df.keys():
         raise ValueError("Column: {column} not in the dataframe.")
+    
+    if isinstance(df[column].values[0], str) == False:
+        raise ValueError("Type of the column not allowed for the Exponential mechanism.")
 
     if epsilon <= 0:
         raise ValueError("The privacy budget must be greater than 0.")

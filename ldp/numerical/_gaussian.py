@@ -18,8 +18,6 @@
 
 import numpy as np
 import pandas as pd
-import typing
-
 
 def dp_clip_gaussian(
     df: pd.DataFrame,
@@ -45,6 +43,8 @@ def dp_clip_gaussian(
         data = df[column].astype(int)
     elif np.issubdtype(df[column].dtype, np.floating):
         data = df[column].astype(float)
+    else: 
+        raise ValueError("Type of the column not allowed for the Gaussian mechanism.")
 
     if lower_bound is None:
         lower_bound = min(data.values)
