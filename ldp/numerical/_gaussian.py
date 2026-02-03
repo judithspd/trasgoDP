@@ -19,6 +19,7 @@
 import numpy as np
 import pandas as pd
 
+
 def dp_clip_gaussian(
     df: pd.DataFrame,
     column: str,
@@ -28,7 +29,34 @@ def dp_clip_gaussian(
     upper_bound=None,
     new_column=False,
 ) -> pd.DataFrame:
-    "Apply the Gaussian mechanism to a numeric column of a dataframe"
+    """Apply the Gaussian mechanism to a numeric column of a dataframe and clip the result.
+
+    :param df: dataframe with the data under study.
+    :type df: pandas dataframe
+
+    :param columm: column to which the DP mechanism will be applied.
+    :type columm: string
+
+    :param epsilon: privacy budget.
+    :type epsilon: float
+
+    :param delta: probability of exceeding the privacy budget.
+    :type delta: float
+
+    :param lower_bound: lower bound for clipping and calculating the sensitivity.
+    :type lower_bound: float
+
+    :param upper_bound: upper bound for clipping and calculating the sensitivity.
+    :type upper_bound: float
+
+    :param new_column: boolean, default to False. If False, the new values obtained
+        with the mechanims applied are stored in the same column. If True, a new column
+        "dp_{column}" is created with the new values.
+    :type  new_column: boolean
+
+    :return: dataframe with the column transformed applying the mechanism.
+    :rtype: pandas dataframe.
+    """
 
     if column not in df.keys():
         raise ValueError("Column: {column} not in the dataframe.")
@@ -43,7 +71,7 @@ def dp_clip_gaussian(
         data = df[column].astype(int)
     elif np.issubdtype(df[column].dtype, np.floating):
         data = df[column].astype(float)
-    else: 
+    else:
         raise ValueError("Type of the column not allowed for the Gaussian mechanism.")
 
     if lower_bound is None:

@@ -19,19 +19,40 @@
 import numpy as np
 import pandas as pd
 
+
 def dp_exponential(
     df: pd.DataFrame,
     column: str,
     epsilon: float,
     new_column=False,
 ) -> pd.DataFrame:
-    "Apply the Exponential mechanism to a numeric column of a dataframe"
+    """Apply the Exponential mechanism to a categorical column of a dataframe.
+
+    :param df: dataframe with the data under study.
+    :type df: pandas dataframe
+
+    :param columm: column to which the DP mechanism will be applied.
+    :type columm: string
+
+    :param epsilon: privacy budget.
+    :type epsilon: float
+
+    :param new_column: boolean, default to False. If False, the new values obtained
+        with the mechanims applied are stored in the same column. If True, a new column
+        "dp_{column}" is created with the new values.
+    :type  new_column: boolean
+
+    :return: dataframe with the column transformed applying the mechanism.
+    :rtype: pandas dataframe.
+    """
 
     if column not in df.keys():
         raise ValueError("Column: {column} not in the dataframe.")
-    
+
     if isinstance(df[column].values[0], str) == False:
-        raise ValueError("Type of the column not allowed for the Exponential mechanism.")
+        raise ValueError(
+            "Type of the column not allowed for the Exponential mechanism."
+        )
 
     if epsilon <= 0:
         raise ValueError("The privacy budget must be greater than 0.")
