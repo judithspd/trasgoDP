@@ -1,5 +1,5 @@
 # TrasgoDP
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-green.svg)](https://github.com/judithspd/siesta-ldp/blob/main/LICENSE) 
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-green.svg)](https://github.com/judithspd/trasgodp/blob/main/LICENSE) 
 
 This library implements three mechanims for ε-differential privacy and (ε, δ)-differential privacy. The mechanisms are implemented for being used under a local approach, adding noise directly to the raw data. 
 Two types of mechanims are implemented: 
@@ -19,8 +19,8 @@ For applying DP mechanisms on your data you need to introduce:
 **Example: apply DP to the [adult dataset](https://archive.ics.uci.edu/dataset/2/adult) with the Laplace mechanism for the column _age_ and the Exponential mechanism for the column _workclass_:**
 ```python
 import pandas as pd
-from ldp.numerical import dp_clip_laplace
-from ldp.categorical import dp_exponential
+from trasgodp.numerical import dp_clip_laplace
+from trasgodp.categorical import dp_exponential
 
 # Read and process the data
 data = pd.read_csv("examples/adult.csv")
@@ -51,7 +51,7 @@ df = dp_exponential(data, column_cat, epsilon2, new_column=True)
 This project is under active development. 
 
 ## License
-This project is licensed under the [Apache 2.0 license](https://github.com/judithspd/siesta-ldp/blob/main/LICENSE).
+This project is licensed under the [Apache 2.0 license](https://github.com/judithspd/trasgodp/blob/main/LICENSE).
 
 ## Funding and acknowledgments
 This work is funded by European Union through the SIESTA project (Horizon Europe) under Grant number [101131957](https://cordis.europa.eu/project/id/101131957).
