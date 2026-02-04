@@ -1,11 +1,11 @@
 # TrasgoDP
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-green.svg)](https://github.com/judithspd/trasgodp/blob/main/LICENSE) 
+[![codecov](https://codecov.io/gh/judithspd/trasgodp/graph/badge.svg?token=RGO77BTPHZ)](https://codecov.io/gh/judithspd/trasgodp)
 [![Documentation Status](https://readthedocs.org/projects/trasgodp/badge/?version=latest)](https://trasgodp.readthedocs.io/en/latest/?badge=latest)
 [![CI/CD Pipeline](https://github.com/judithspd/trasgodp/actions/workflows/cicd.yml/badge.svg)](https://github.com/judithspd/trasgodp/actions/workflows/cicd.yml)
 ![Python version](https://img.shields.io/badge/python-3.10|3.11|3.12|3.13|3.14-blue)
 
-
-This library implements three mechanims for ε-differential privacy and (ε, δ)-differential privacy. The mechanisms are implemented for being used under a local approach, adding noise directly to the raw data. 
+TrasgoDP implements different mechanims for ε-differential privacy and (ε, δ)-differential privacy. The mechanisms are implemented for being used under a local approach, adding noise directly to the raw data. 
 Two types of mechanims are implemented: 
 - For numerical records: _Laplace_ and _Gaussian mechanisms_. The implementation includes a final clipping applyied on the data with DP.
 - For categorical records: _Exponential mechanism_.
