@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0  
 
       - name: Set up Python 3.10
         uses: actions/setup-python@v6
@@ -23,14 +25,16 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install build
           pip install twine
+          curl -sSL https://install.python-poetry.org | python3 -
 
-      - name: Build and upload package
+      - name: Build package
         run: |
-          python -m build
+          poetry build
+
+      - name: Upload package to PyPI
+        run: |
           python -m twine upload dist/*
         env:
           TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-          
