@@ -1,5 +1,5 @@
 import unittest
-from ldp import numerical, categorical
+from trasgodp import numerical, categorical
 import numpy as np
 import pandas as pd
 
