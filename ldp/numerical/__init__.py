@@ -12,9 +12,7 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-"""
-DP mechanisms for numerical columns with clipped results.
-"""
+"""DP mechanisms for numerical columns with clipped results."""
 
 from ._gaussian import dp_clip_gaussian
 from ._laplace import dp_clip_laplace

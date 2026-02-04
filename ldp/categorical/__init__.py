@@ -12,9 +12,7 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-"""
-DP Exponential mechanism for categorical columns.
-"""
+"""DP Exponential mechanism for categorical columns."""
 
 from ._exponential import dp_exponential, dp_exponential_array
 

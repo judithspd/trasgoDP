@@ -57,7 +57,6 @@ def dp_clip_gaussian(
     :return: dataframe with the column transformed applying the mechanism.
     :rtype: pandas dataframe.
     """
-
     if column not in df.keys():
         raise ValueError("Column: {column} not in the dataframe.")
 
