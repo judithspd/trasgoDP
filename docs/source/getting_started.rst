@@ -6,8 +6,8 @@ This first example uses the `adult dataset`_. The idea is to apply local DP, fir
 .. code-block:: python
 
    import pandas as pd
-   from ldp.numerical import dp_clip_laplace
-   from ldp.categorical import dp_exponential
+   from trasgodp.numerical import dp_clip_laplace
+   from trasgodp.categorical import dp_exponential
 
    # Read and process the data
    data = pd.read_csv("examples/adult.csv")
