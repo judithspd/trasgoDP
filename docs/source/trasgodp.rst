@@ -1,5 +1,5 @@
-ldp package
-===========
+trasgodp package
+================
 
 Subpackages
 -----------
@@ -7,13 +7,13 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   ldp.categorical
-   ldp.numerical
+   trasgodp.categorical
+   trasgodp.numerical
 
 Module contents
 ---------------
 
-.. automodule:: ldp
+.. automodule:: trasgodp
    :members:
    :undoc-members:
    :show-inheritance:

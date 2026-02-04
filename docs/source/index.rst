@@ -1,9 +1,9 @@
-.. siesta-ldp documentation master file, created by
+.. trasgoDP documentation master file, created by
    sphinx-quickstart on Wed Feb  4 15:57:56 2026.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-siesta-ldp documentation
+trasgoDP documentation
 ========================
 Start applying local differential privacy directly to you data in few lines of code.
 
