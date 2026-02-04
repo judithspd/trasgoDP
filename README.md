@@ -1,9 +1,12 @@
-# TrasgoDP
+<img align="center" width="500" src="https://raw.githubusercontent.com/judithspd/trasgodp/main/images/logo_trasgodp.png">
+
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-green.svg)](https://github.com/judithspd/trasgodp/blob/main/LICENSE) 
 [![codecov](https://codecov.io/gh/judithspd/trasgodp/graph/badge.svg?token=RGO77BTPHZ)](https://codecov.io/gh/judithspd/trasgodp)
 [![PyPI](https://img.shields.io/pypi/v/trasgodp)](https://pypi.org/project/trasgoDP/)
 [![Documentation Status](https://readthedocs.org/projects/trasgodp/badge/?version=latest)](https://trasgodp.readthedocs.io/en/latest/?badge=latest)
+[![Publish Package in PyPI](https://github.com/judithspd/trasgodp/actions/workflows/pypi.yml/badge.svg)](https://github.com/judithspd/trasgodp/actions/workflows/pypi.yml)
 [![CI/CD Pipeline](https://github.com/judithspd/trasgodp/actions/workflows/cicd.yml/badge.svg)](https://github.com/judithspd/trasgodp/actions/workflows/cicd.yml)
+[![Code Coverage](https://github.com/judithspd/trasgodp/actions/workflows/.codecov.yml/badge.svg)](https://github.com/judithspd/trasgodp/actions/workflows/.codecov.yml)
 ![Python version](https://img.shields.io/badge/python-3.10|3.11|3.12|3.13|3.14-blue)
 
 TrasgoDP implements different mechanims for ε-differential privacy and (ε, δ)-differential privacy. The mechanisms are implemented for being used under a local approach, adding noise directly to the raw data. 
