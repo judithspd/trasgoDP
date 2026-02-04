@@ -63,7 +63,7 @@ def dp_exponential(
     dp_column = []
     for i in range(len(df)):
         original_value = df[column].iloc[i]
-        dp_value = probability_exp(original_value, categories, epsilon)
+        dp_value = _probability_exp(original_value, categories, epsilon)
         dp_column.append(dp_value)
 
     if new_column:
@@ -105,13 +105,25 @@ def dp_exponential_array(
 
     dp_array = []
     for original_value in data:
-        dp_value = probability_exp(original_value, categories, epsilon)
+        dp_value = _probability_exp(original_value, categories, epsilon)
         dp_array.append(dp_value)
 
-    return dp_array
+    return np.array(dp_array)
 
 
-def probability_exp(value, categories, epsilon):
+def _probability_exp(value, categories, epsilon):
+    """
+    Probability of the output of the Exponential mechanism.
+
+    :param value: current value
+    :type value: str
+
+    :param categories: possible values of the data
+    :type categories: list of strings
+
+    :param epsilon: privacy budget.
+    :type epsilon: float
+    """
     sensitivity = 1
     scores = np.array([1 if value == c else 0 for c in categories])
     exp_scores = np.exp((epsilon * scores) / 2 * sensitivity)
