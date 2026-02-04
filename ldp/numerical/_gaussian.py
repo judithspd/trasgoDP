@@ -29,7 +29,7 @@ def dp_clip_gaussian(
     upper_bound=None,
     new_column=False,
 ) -> pd.DataFrame:
-    """Apply the Gaussian mechanism to a numeric column of a dataframe and clip the result.
+    """Apply the Gaussian mechanism to a dataframe numeric column and clip the result.
 
     :param df: dataframe with the data under study.
     :type df: pandas dataframe
@@ -50,8 +50,8 @@ def dp_clip_gaussian(
     :type upper_bound: float
 
     :param new_column: boolean, default to False. If False, the new values obtained
-        with the mechanims applied are stored in the same column. If True, a new column
-        "dp_{column}" is created with the new values.
+        with the mechanims applied are stored in the same column. If True,
+        a new column 'dp_{column}' is created with the new values.
     :type  new_column: boolean
 
     :return: dataframe with the column transformed applying the mechanism.

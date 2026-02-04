@@ -28,7 +28,7 @@ def dp_clip_laplace(
     upper_bound=None,
     new_column=False,
 ) -> pd.DataFrame:
-    """Apply the Laplace mechanism to a numeric column of a dataframe and clip the result.
+    """Apply the Laplace mechanism to a dataframe numeric column and clip the result.
 
     :param df: dataframe with the data under study.
     :type df: pandas dataframe
