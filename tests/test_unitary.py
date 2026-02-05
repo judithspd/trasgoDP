@@ -36,6 +36,12 @@ class TestInvalidValues(unittest.TestCase):
         with self.assertRaises(ValueError):
             categorical.dp_exponential(self.data, column, epsilon)
 
+    def test_error_column_rr_binary(self):
+        column = "educatin"
+        epsilon = 1
+        with self.assertRaises(ValueError):
+            categorical.dp_randomized_response_binary(self.data, column, epsilon)
+
     def test_error_type_exponential(self):
         epsilon = 1
         with self.assertRaises(ValueError):
@@ -96,6 +102,12 @@ class TestInvalidValues(unittest.TestCase):
         with self.assertRaises(ValueError):
             categorical.dp_exponential_array(self.data["education"].values, epsilon)
 
+    def test_error_epsilon_rr_binary(self):
+        epsilon = -1
+        column = "sex"
+        with self.assertRaises(ValueError):
+            categorical.dp_randomized_response_binary(self.data, column, epsilon)
+
     def test_output_laplace(self):
         epsilon = 1
         column = "age"
@@ -121,6 +133,27 @@ class TestInvalidValues(unittest.TestCase):
             self.data["education"].values, epsilon
         )
         assert isinstance(data_dp, np.ndarray)
+
+    def test_output_rr_binary(self):
+        epsilon = 1
+        column = "sex"
+        data_dp = categorical.dp_randomized_response_binary(self.data, column, epsilon)
+        assert isinstance(data_dp, pd.DataFrame)
+
+    def test_binary_rr_binary(self):
+        epsilon = 1
+        column = "workclass"
+        with self.assertRaises(ValueError):
+            categorical.dp_randomized_response_binary(self.data, column, epsilon)
+
+    def test_label_rr_binary(self):
+        epsilon = 1
+        column = "sex"
+        positive_label = "mujer"
+        with self.assertRaises(ValueError):
+            categorical.dp_randomized_response_binary(
+                self.data, column, epsilon, positive_label=positive_label
+            )
 
 
 if __name__ == "__main__":
