@@ -15,5 +15,6 @@
 """DP Exponential mechanism for categorical columns."""
 
 from ._exponential import dp_exponential, dp_exponential_array
+from ._randomized_response import dp_randomized_response_binary
 
-__all__ = ["dp_exponential", "dp_exponential_array"]
+__all__ = ["dp_exponential", "dp_exponential_array", "dp_randomized_response_binary"]
