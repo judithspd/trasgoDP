@@ -1,7 +1,7 @@
 Introduction
 ############
 
-Let's start introducing the methematical definition of ε-differential privacy:
+Let's start introducing the mathematical definition of ε-differential privacy:
 
 .. _definition-epsilon-dp:
 
