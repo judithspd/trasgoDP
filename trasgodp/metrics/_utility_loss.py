@@ -63,7 +63,7 @@ def correlation_loss(
         new_features = []
         for col in features:
             dp_col = f"dp_{col}"
-            if dp_col in features:
+            if dp_col in df_dp.columns:
                 new_features.append(dp_col)
             else:
                 new_features.append(col)
