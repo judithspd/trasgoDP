@@ -45,8 +45,8 @@ def correlation_loss(
     :type method: string
 
     :param new_column: boolean, default to False. If True, the columns with dp
-    start with dp_. Otherwise, the names of the columns with DP are the same as in
-    the original dataset.
+        start with dp. Otherwise, the names of the columns with DP are the same as in
+        the original dataset.
     :type  new_column: boolean
 
     :return: utlity loss (%) comparing the difference between correlations.
@@ -120,7 +120,7 @@ def divergence_distributions(
     :type column: string
 
     :param new_column: boolean, default to False. If True, the column with dp
-    starts with dp_.
+        starts with dp.
     :type  new_column: boolean
 
     :return: dictionary with the divergence metrics (TVD, JS, KL).
