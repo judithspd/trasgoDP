@@ -19,8 +19,6 @@
 import numpy as np
 import pandas as pd
 import typing
-import copy
-
 import scipy
 
 
@@ -31,8 +29,7 @@ def correlation_loss(
     method: str = "pearson",
     new_column: bool = False,
 ) -> float:
-    """Compute utility loss (%) based on the preservation of the correlation
-    between features.
+    """Compute utility loss (%) based on the preservation of the correlation.
 
     :param df_original: dataframe with the original data.
     :type df_original: pandas dataframe
@@ -84,13 +81,13 @@ def correlation_loss(
         else:
             df_dp[col] = df_dp[col].map(mapping)
 
-    X_original = df_original[features]
-    X_dp = df_dp[new_features]
+    x_original = df_original[features]
+    x_dp = df_dp[new_features]
 
-    corr_original = X_original.corr(method=method).values
+    corr_original = x_original.corr(method=method).values
     mask = ~np.eye(corr_original.shape[0], dtype=bool)
     corr_original = corr_original[mask]
-    corr_dp = X_dp.corr(method=method).values
+    corr_dp = x_dp.corr(method=method).values
     mask = ~np.eye(corr_dp.shape[0], dtype=bool)
     corr_dp = corr_dp[mask]
 
@@ -105,8 +102,7 @@ def divergence_distributions(
     column: str,
     new_column: bool = False,
 ) -> dict:
-    """Compute divergence between the distribution of a feature in the original
-    and DP datasets.
+    """Compute divergence between the distribution of a feature in the original and DP datasets.
 
     :param df_original: dataframe with the original data.
     :type df_original: pandas dataframe
@@ -140,11 +136,11 @@ def divergence_distributions(
     freq_orig = freq_orig.reindex(all_categories, fill_value=0)
     freq_dp = freq_dp.reindex(all_categories, fill_value=0)
 
-    P = freq_orig / freq_orig.sum()
-    Q = freq_dp / freq_dp.sum()
+    p_orig = freq_orig / freq_orig.sum()
+    q_dp = freq_dp / freq_dp.sum()
 
-    tvd = 0.5 * np.sum(np.abs(P - Q))
-    js = scipy.spatial.distance.jensenshannon(P, Q, base=np.e) ** 2
-    kl = scipy.stats.entropy(P, Q)
+    tvd = 0.5 * np.sum(np.abs(p_orig - q_dp))
+    js = scipy.spatial.distance.jensenshannon(p_orig, q_dp, base=np.e) ** 2
+    kl = scipy.stats.entropy(p_orig, q_dp)
 
     return {"tvd": tvd, "js": js, "kl": kl}
