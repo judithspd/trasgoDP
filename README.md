@@ -25,6 +25,16 @@ source .venv/bin/activate
 pip install trasgoDP
 ```
 
+## Mechanisms implemented 
+
+| **Mechanism**               | **Type of the attribute** | **Function in _trasgoDP_**                    |
+| --------------------------- |-------------------------- |---------------------------------------------- |
+| _Laplace_                   | _Numerical_               | `numerical.dp_clip_laplace()`                 |
+| _Gaussian_                  | _Numerical_               | `numerical.dp_clip_gaussian()`                |
+| _Exponential_               | _Categorical_             | `categorical.dp_exponential()`                |
+| _Randomized response_       | _Categorical (binary)_    | `categorical.dp_randomized_response_binary()` |
+| _k-ary randomized response_ | _Categorical_             | `categorical.dp_randomized_response_kary()`   |
+
 ## Getting started
 For applying DP mechanisms to a column of a dataframe you need to introduce:
 * The **pandas dataframe** with the data.
