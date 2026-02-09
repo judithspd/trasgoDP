@@ -102,7 +102,7 @@ def divergence_distributions(
     column: str,
     new_column: bool = False,
 ) -> dict:
-    """Compute divergence between the distribution of a feature in the original and DP datasets.
+    """Divergence between the distribution of a column in the original and DP datasets.
 
     :param df_original: dataframe with the original data.
     :type df_original: pandas dataframe
