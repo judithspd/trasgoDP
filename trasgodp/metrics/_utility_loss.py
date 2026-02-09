@@ -79,6 +79,8 @@ def correlation_loss(
             dp_col = f"dp_{col}"
             if dp_col in df_dp.columns:
                 df_dp[dp_col] = df_dp[dp_col].map(mapping)
+            else:
+                df_dp[col] = df_dp[col].map(mapping)
         else:
             df_dp[col] = df_dp[col].map(mapping)
 
