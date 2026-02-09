@@ -20,6 +20,7 @@ import numpy as np
 import pandas as pd
 import typing
 import scipy
+import copy
 
 
 def correlation_loss(
@@ -51,6 +52,8 @@ def correlation_loss(
     :return: utlity loss (%) comparing the difference between correlations.
     :rtype: float
     """
+    df_original = copy.deepcopy(df_original)
+    df_dp = copy.deepcopy(df_dp)
     if not all(col in df_original.columns for col in features):
         raise ValueError("Not all features are in the dataframe.")
     if not all(col in df_dp.columns for col in features):
@@ -123,6 +126,8 @@ def divergence_distributions(
     :return: dictionary with the divergence metrics (TVD, JS, KL).
     :rtype: dict
     """
+    df_original = copy.deepcopy(df_original)
+    df_dp = copy.deepcopy(df_dp)
     if column not in df_original.keys():
         raise ValueError("Column: {column} not in the original dataframe.")
     if column not in df_dp.keys():
