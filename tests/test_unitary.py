@@ -318,6 +318,66 @@ class TestInvalidValues(unittest.TestCase):
         features = ["workclass", "sex", "education", "age"]
         assert isinstance(metrics.correlation_loss(self.data, data_dp, features), float)
 
+    def test_no_new_corr(self):
+        epsilon = 1
+        column = "workclass"
+        data_dp = categorical.dp_randomized_response_kary(
+            self.data, column, epsilon, new_column=False
+        )
+        features = ["workclass", "sex", "education", "age"]
+        assert isinstance(
+            metrics.correlation_loss(self.data, data_dp, features, new_column=False),
+            float,
+        )
+
+    def test_column_divergence(self):
+        epsilon = 1
+        column = "workclass"
+        data_dp = categorical.dp_randomized_response_kary(
+            self.data, column, epsilon, new_column=True
+        )
+        column = "Work"
+        with self.assertRaises(ValueError):
+            metrics.divergence_distributions(self.data, data_dp, column)
+
+    def test_column_dp_divergence(self):
+        epsilon = 1
+        column = "workclass"
+        data_dp = categorical.dp_randomized_response_kary(
+            self.data, column, epsilon, new_column=False
+        )
+        column = "dp_work"
+        with self.assertRaises(ValueError):
+            metrics.divergence_distributions(self.data, data_dp, column)
+
+    def test_newcol_divergence(self):
+        epsilon = 1
+        column = "workclass"
+        data_dp = categorical.dp_randomized_response_kary(
+            self.data, column, epsilon, new_column=True
+        )
+        column = "workclass"
+        assert isinstance(
+            metrics.divergence_distributions(
+                self.data, data_dp, column, new_column=True
+            ),
+            dict,
+        )
+
+    def test_no_newcol_divergence(self):
+        epsilon = 1
+        column = "workclass"
+        data_dp = categorical.dp_randomized_response_kary(
+            self.data, column, epsilon, new_column=False
+        )
+        column = "workclass"
+        assert isinstance(
+            metrics.divergence_distributions(
+                self.data, data_dp, column, new_column=False
+            ),
+            dict,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
