@@ -130,13 +130,14 @@ def divergence_distributions(
     df_dp = copy.deepcopy(df_dp)
     if column not in df_original.keys():
         raise ValueError("Column: {column} not in the original dataframe.")
-    if column not in df_dp.keys():
-        raise ValueError("Column: {column} not in the dataframe with DP.")
 
     if new_column:
         dp_column = f"dp_{column}"
     else:
         dp_column = column
+
+    if dp_column not in df_dp.keys():
+        raise ValueError("Column: {dp_column} not in the dataframe with DP.")
 
     freq_orig = df_original[column].value_counts().sort_index()
     freq_dp = df_dp[dp_column].value_counts().sort_index()
