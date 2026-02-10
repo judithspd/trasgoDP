@@ -1,5 +1,31 @@
 # Changelog
 
+## [0.2.0](https://github.com/judithspd/trasgoDP/compare/v0.1.0...v0.2.0) (2026-02-10)
+
+
+### Features
+
+* add metrics for measuring the utility loss using the divergence between distributions and the correlation loss ([a0a8ef6](https://github.com/judithspd/trasgoDP/commit/a0a8ef6c57c39da92a6b49b3036d19bf80d08d9a))
+
+
+### Bug Fixes
+
+* fix lint ([489de57](https://github.com/judithspd/trasgoDP/commit/489de57be0263f0a6fa8ba66c4272b838505b0f7))
+* fix lint ([1cdfc1f](https://github.com/judithspd/trasgoDP/commit/1cdfc1fc0dd0643a8709be778e310d997df73d8d))
+* update README.md ([bf04fc3](https://github.com/judithspd/trasgoDP/commit/bf04fc3d360dcf1f2c9d9960ff1ccd0b92314db5))
+* update README.md ([bbbfe2c](https://github.com/judithspd/trasgoDP/commit/bbbfe2cfa32bcc44f76c2854523ea300006c22c8))
+* use copy of the dataframes ([2f198d8](https://github.com/judithspd/trasgoDP/commit/2f198d82f1833fcbf31422910a8b7bb2e8841fab))
+
+
+### Documentation
+
+* fix docstrings ([aacca03](https://github.com/judithspd/trasgoDP/commit/aacca03b8f92d575d52413f5bfcd65121f9a5d62))
+* fix docstrings ([1579098](https://github.com/judithspd/trasgoDP/commit/1579098599be6a8dbc5a830fc7047d9b326bbec5))
+* update docs ([7dcc9b6](https://github.com/judithspd/trasgoDP/commit/7dcc9b6c198aaaa87db3363f506b6e18fb05c196))
+* update docs wit the new package of metrics ([795ef88](https://github.com/judithspd/trasgoDP/commit/795ef8835930ee49b288a4bcc47e1a9bf2faf54a))
+* update docs with the metrics package ([8bba1b7](https://github.com/judithspd/trasgoDP/commit/8bba1b76482af2b71d7db7799e8ec730f2486431))
+* update README ([6e5b001](https://github.com/judithspd/trasgoDP/commit/6e5b001a65cd0748e34a5c1b76c32e1436b0acb5))
+
 ## [0.1.0](https://github.com/judithspd/trasgoDP/compare/v0.0.1...v0.1.0) (2026-02-06)
 
 
