@@ -1,5 +1,5 @@
 import unittest
-from trasgodp import numerical, categorical
+from trasgodp import numerical, categorical, metrics
 import numpy as np
 import pandas as pd
 
@@ -258,6 +258,65 @@ class TestInvalidValues(unittest.TestCase):
             self.data, column, epsilon, new_column=True
         )
         assert len(data_dp.columns) == len(self.data.columns) + 1
+
+    def test_features_corr(self):
+        epsilon = 1
+        column = "workclass"
+        data_dp = categorical.dp_randomized_response_kary(
+            self.data, column, epsilon, new_column=True
+        )
+        features = ["age", "workclass", "gender"]
+        with self.assertRaises(ValueError):
+            metrics.correlation_loss(self.data, data_dp, features)
+
+    def test_features_dp_corr(self):
+        epsilon = 1
+        column = "workclass"
+        data_dp = categorical.dp_randomized_response_kary(
+            self.data, column, epsilon, new_column=True
+        )
+        data_dp = data_dp.drop("sex", axis=1)
+        features = ["age", "workclass", "sex"]
+        with self.assertRaises(ValueError):
+            metrics.correlation_loss(self.data, data_dp, features)
+
+    def test_method_corr(self):
+        epsilon = 1
+        column = "workclass"
+        data_dp = categorical.dp_randomized_response_kary(
+            self.data, column, epsilon, new_column=True
+        )
+        features = ["age", "workclass", "sex"]
+        method = "corr"
+        with self.assertRaises(ValueError):
+            metrics.correlation_loss(self.data, data_dp, features, method=method)
+
+    def test_categorical_corr(self):
+        epsilon = 1
+        column = "workclass"
+        data_dp = categorical.dp_randomized_response_kary(
+            self.data, column, epsilon, new_column=True
+        )
+        features = ["workclass", "sex", "education"]
+        assert isinstance(metrics.correlation_loss(self.data, data_dp, features), float)
+
+    def test_num_corr(self):
+        epsilon = 1
+        column = "workclass"
+        data_dp = categorical.dp_randomized_response_kary(
+            self.data, column, epsilon, new_column=True
+        )
+        features = ["age", "education-num"]
+        assert isinstance(metrics.correlation_loss(self.data, data_dp, features), float)
+
+    def test_num_cat_corr(self):
+        epsilon = 1
+        column = "workclass"
+        data_dp = categorical.dp_randomized_response_kary(
+            self.data, column, epsilon, new_column=True
+        )
+        features = ["workclass", "sex", "education", "age"]
+        assert isinstance(metrics.correlation_loss(self.data, data_dp, features), float)
 
 
 if __name__ == "__main__":
