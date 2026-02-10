@@ -8,6 +8,7 @@ Subpackages
    :maxdepth: 4
 
    trasgodp.categorical
+   trasgodp.metrics
    trasgodp.numerical
 
 Module contents
