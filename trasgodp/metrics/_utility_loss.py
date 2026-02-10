@@ -35,8 +35,8 @@ def correlation_loss(
     :param df_original: dataframe with the original data.
     :type df_original: pandas dataframe
 
-    :param df_original: dataframe with the data privatized using DP.
-    :type df_original: pandas dataframe
+    :param df_dp: dataframe with the data privatized using DP.
+    :type df_dp: pandas dataframe
 
     :param features: list of featured for calculating the correlation.
     :type features: list
@@ -113,8 +113,8 @@ def divergence_distributions(
     :param df_original: dataframe with the original data.
     :type df_original: pandas dataframe
 
-    :param df_original: dataframe with the data privatized using DP.
-    :type df_original: pandas dataframe
+    :param df_dp: dataframe with the data privatized using DP.
+    :type df_dp: pandas dataframe
 
     :param column: column to which DP has been applied.
     :type column: string
