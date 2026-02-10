@@ -263,7 +263,7 @@ class TestInvalidValues(unittest.TestCase):
         epsilon = 1
         column = "workclass"
         data_dp = categorical.dp_randomized_response_kary(
-            self.data, column, epsilon, new_column=True
+            self.data, column, epsilon, new_column=False
         )
         features = ["age", "workclass", "gender"]
         with self.assertRaises(ValueError):
@@ -273,7 +273,7 @@ class TestInvalidValues(unittest.TestCase):
         epsilon = 1
         column = "workclass"
         data_dp = categorical.dp_randomized_response_kary(
-            self.data, column, epsilon, new_column=True
+            self.data, column, epsilon, new_column=False
         )
         data_dp = data_dp.drop("sex", axis=1)
         features = ["age", "workclass", "sex"]
@@ -284,7 +284,7 @@ class TestInvalidValues(unittest.TestCase):
         epsilon = 1
         column = "workclass"
         data_dp = categorical.dp_randomized_response_kary(
-            self.data, column, epsilon, new_column=True
+            self.data, column, epsilon, new_column=False
         )
         features = ["age", "workclass", "sex"]
         method = "corr"
@@ -298,7 +298,10 @@ class TestInvalidValues(unittest.TestCase):
             self.data, column, epsilon, new_column=True
         )
         features = ["workclass", "sex", "education"]
-        assert isinstance(metrics.correlation_loss(self.data, data_dp, features), float)
+        assert isinstance(
+            metrics.correlation_loss(self.data, data_dp, features, new_column=True),
+            float,
+        )
 
     def test_num_corr(self):
         epsilon = 1
@@ -307,7 +310,10 @@ class TestInvalidValues(unittest.TestCase):
             self.data, column, epsilon, new_column=True
         )
         features = ["age", "education-num"]
-        assert isinstance(metrics.correlation_loss(self.data, data_dp, features), float)
+        assert isinstance(
+            metrics.correlation_loss(self.data, data_dp, features, new_column=True),
+            float,
+        )
 
     def test_num_cat_corr(self):
         epsilon = 1
@@ -316,7 +322,10 @@ class TestInvalidValues(unittest.TestCase):
             self.data, column, epsilon, new_column=True
         )
         features = ["workclass", "sex", "education", "age"]
-        assert isinstance(metrics.correlation_loss(self.data, data_dp, features), float)
+        assert isinstance(
+            metrics.correlation_loss(self.data, data_dp, features, new_column=True),
+            float,
+        )
 
     def test_no_new_corr(self):
         epsilon = 1
@@ -326,7 +335,7 @@ class TestInvalidValues(unittest.TestCase):
         )
         features = ["workclass", "sex", "education", "age"]
         assert isinstance(
-            metrics.correlation_loss(self.data, data_dp, features, new_column=False),
+            metrics.correlation_loss(self.data, data_dp, features),
             float,
         )
 
@@ -346,7 +355,8 @@ class TestInvalidValues(unittest.TestCase):
         data_dp = categorical.dp_randomized_response_kary(
             self.data, column, epsilon, new_column=False
         )
-        column = "dp_work"
+        data_dp = data_dp.drop("workclass", axis=1)
+        column = "workclass"
         with self.assertRaises(ValueError):
             metrics.divergence_distributions(self.data, data_dp, column)
 
