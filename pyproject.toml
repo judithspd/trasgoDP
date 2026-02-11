@@ -9,7 +9,7 @@ authors = [
 maintainers = ["Judith Sáinz-Pardo Díaz <sainzpardo@ifca.unican.es>"]
 license = "Apache License 2.0"
 readme = "README.md"
-repository = "https://github.com/judithspd/siesta-ldp"
+repository = "https://github.com/FCA-Advanced-Computing/trasgoDP"
 keywords = ["data", "privacy", "differential-privacy"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
